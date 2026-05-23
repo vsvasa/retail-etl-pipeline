@@ -40,7 +40,7 @@ def generate_products(num_products = 1000):
             "product_id":product_id,
             "product_name":fake.word().capitalize(),
             "category":random.choice(categories),
-            "price":round(random.uniform(10,1000),2)
+            "price":round(random.uniform(0,1000),2)
         })
     return pd.DataFrame(products)
     
@@ -52,7 +52,7 @@ def generate_orders(num_orders=100000,num_customers=10000):
         "order_id":order_id,
         "customer_id":np.random.randint(1,num_customers),
         "order_date":fake.date_between(start_date='-2y',end_date='today'),
-        "amount":round(random.uniform(100, 50000),2)
+        "amount":round(random.uniform(0, 50000),2)
     })
     return pd.DataFrame(orders)
 
@@ -70,7 +70,7 @@ def generate_sales(orders_df, num_sales=500000, num_products=1000):
             "order_id": random.choice(order_ids),
             "product_id": np.random.randint(1, num_products + 1),
             "quantity": np.random.randint(1, 10),
-            "sale_amount": round(random.uniform(20, 2000), 2),
+            "sale_amount": round(random.uniform(0, 2000), 2),
             "last_updated": datetime.now()
         })
 
