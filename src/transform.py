@@ -18,7 +18,7 @@ def transform_customers_data(df):
     #convert datetime
 
     df['created_date'] = pd.to_datetime(df['created_date'])
-    df['update_date'] = pd.to_datetime(df['updated_date'])
+    df['updated_date'] = pd.to_datetime(df['updated_date'])
 
     return df
 
@@ -52,7 +52,16 @@ def transform_orders_data(df):
 
     # Add order Year
     df['order_year'] = df['order_date'].dt.year
-
+    
+    # Select final columns
+    df = df[
+        [
+            "order_id",
+            "customer_id",
+            "order_date",
+            "amount"
+        ]
+    ]
     return df
 
 

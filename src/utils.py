@@ -1,5 +1,6 @@
 import logging
 import os
+import configparser
 
 
 def setup_logger():
@@ -13,3 +14,9 @@ def setup_logger():
        
     )
     return logging
+
+def read_config():
+    config = configparser.ConfigParser()
+    config.read("config/config.ini")
+
+    return config
