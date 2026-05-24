@@ -14,3 +14,14 @@ def extract_csv(filepath,expected_columns):
 
     return df
 
+def c():
+    sales_df = pd.read_csv("data/raw/sales.csv")
+
+    duplicates = sales_df[
+        sales_df['sale_id'].duplicated()
+    ]
+
+    print(len(duplicates))
+
+
+c()

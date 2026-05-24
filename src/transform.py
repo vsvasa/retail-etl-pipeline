@@ -5,6 +5,7 @@ def transform_customers_data(df):
 
     # Remove duplicates
     df = df.drop_duplicates()
+    df = df.drop_duplicates(subset=['email'])
     
     #Handle null emails
     df = df.dropna(subset=['email'])
@@ -17,8 +18,7 @@ def transform_customers_data(df):
 
     #convert datetime
 
-    df['created_date'] = pd.to_datetime(df['created_date'])
-    df['updated_date'] = pd.to_datetime(df['updated_date'])
+    df['added_date'] = pd.to_datetime(df['added_date'])
 
     return df
 
@@ -59,6 +59,7 @@ def transform_orders_data(df):
             "order_id",
             "customer_id",
             "order_date",
+            "added_date",
             "amount"
         ]
     ]
@@ -73,7 +74,7 @@ def transform_sales_data(df):
     df = df[(df['quantity'] > 0) & (df['sale_amount'] > 0)]
 
     # Convert datetime
-    df['last_updated'] = pd.to_datetime(df['last_updated'])
+    df['added_date'] = pd.to_datetime(df['added_date'])
 
     # Add High sales flag
 
